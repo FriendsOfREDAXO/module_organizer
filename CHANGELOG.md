@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0] - 2026-10-29
+
+### Changed
+- Das AddOn ist zu **Friends Of REDAXO** umgezogen (`github.com/FriendsOfREDAXO/module_organizer`). Projekt-Lead bleibt Thomas Skerbis.
+- Namespace von `KLXM\ModuleOrganizer` auf `FriendsOfRedaxo\ModuleOrganizer` umgestellt. Daten und Einstellungen bleiben unverändert; eigene Setup-Skripte, die die Repository-Klassen direkt nutzen, müssen die `use`-Zeilen anpassen.
+- Der Module Organizer ersetzt das AddOn **Modulsuche** – danke an Daniel Springer. Ist die Modulsuche noch aktiv, warnt der Organizer wie bei `module_preview` und `nv_modulepreview`.
+
 ## [1.6.1] - 2026-10-06
 
 ### Fixed

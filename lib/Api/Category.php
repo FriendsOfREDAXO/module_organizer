@@ -1,8 +1,8 @@
 <?php
 
-namespace KLXM\ModuleOrganizer\Api;
+namespace FriendsOfRedaxo\ModuleOrganizer\Api;
 
-use KLXM\ModuleOrganizer\Repository\CategoryRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CategoryRepository;
 use rex;
 use rex_api_exception;
 use rex_api_function;

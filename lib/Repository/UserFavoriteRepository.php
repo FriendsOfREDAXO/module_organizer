@@ -1,6 +1,6 @@
 <?php
 
-namespace KLXM\ModuleOrganizer\Repository;
+namespace FriendsOfRedaxo\ModuleOrganizer\Repository;
 
 use rex;
 use rex_sql;

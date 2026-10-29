@@ -1,14 +1,14 @@
 <?php
 
-use KLXM\ModuleOrganizer\IconRegistry;
-use KLXM\ModuleOrganizer\Repository\CategoryRepository;
-use KLXM\ModuleOrganizer\Repository\CustomIconRepository;
-use KLXM\ModuleOrganizer\Repository\ModuleMetaRepository;
+use FriendsOfRedaxo\ModuleOrganizer\IconRegistry;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CategoryRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CustomIconRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\ModuleMetaRepository;
 
 $addon = rex_addon::get('module_organizer');
 
 $conflicts = array_values(array_filter(
-    ['module_preview', 'nv_modulepreview'],
+    ['module_preview', 'nv_modulepreview', 'modulsuche'],
     static fn ($name) => rex_addon::exists($name) && rex_addon::get($name)->isAvailable(),
 ));
 if ([] !== $conflicts && $addon->getConfig('warn_module_preview_conflict', true)) {
@@ -169,7 +169,7 @@ foreach ($categories as $category) {
     $tree .= '<div class="checkbox"><label><input type="checkbox" class="mo-areas-children"' . ($category['structure_children'] ? ' checked' : '') . '> ' . $addon->i18n('category_areas_children') . '</label></div>';
     $tree .= '<p class="help-block">' . $addon->i18n('category_areas_notice') . '</p>';
     $tree .= '<div class="form-group mo-areas-color"><label><input type="checkbox" class="mo-areas-use-color"' . ('' !== $category['color'] ? ' checked' : '') . '> ' . $addon->i18n('category_color') . '</label> ';
-    $tree .= '<input type="color" class="mo-areas-color-input" value="' . rex_escape('' !== $category['color'] ? $category['color'] : \KLXM\ModuleOrganizer\IconStyle::colors()[1]) . '" aria-label="' . rex_escape($addon->i18n('category_color')) . '">';
+    $tree .= '<input type="color" class="mo-areas-color-input" value="' . rex_escape('' !== $category['color'] ? $category['color'] : \FriendsOfRedaxo\ModuleOrganizer\IconStyle::colors()[1]) . '" aria-label="' . rex_escape($addon->i18n('category_color')) . '">';
     $tree .= '<p class="help-block">' . $addon->i18n('category_color_notice') . '</p></div>';
     $tree .= '<button type="button" class="btn btn-save btn-xs mo-areas-save">' . $addon->i18n('save') . '</button> ';
     $tree .= '<button type="button" class="btn btn-default btn-xs mo-areas-reset">' . $addon->i18n('category_areas_reset') . '</button>';
@@ -234,7 +234,7 @@ if ([] !== $customPreviews) {
     }
     $previewOptions .= '</optgroup><optgroup label="' . rex_escape($addon->i18n('editor_template_presets')) . '">';
 }
-foreach (\KLXM\ModuleOrganizer\PreviewRegistry::getPresetLabels() as $previewKey => $previewLabel) {
+foreach (\FriendsOfRedaxo\ModuleOrganizer\PreviewRegistry::getPresetLabels() as $previewKey => $previewLabel) {
     $previewOptions .= '<option value="' . rex_escape($previewKey) . '" data-search="' . rex_escape(IconRegistry::getSearchText($previewKey, $previewLabel)) . '">' . rex_escape($previewLabel) . '</option>';
 }
 if ([] !== $customPreviews) {

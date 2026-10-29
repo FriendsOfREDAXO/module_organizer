@@ -1,9 +1,9 @@
 <?php
 
-namespace KLXM\ModuleOrganizer\Api;
+namespace FriendsOfRedaxo\ModuleOrganizer\Api;
 
-use KLXM\ModuleOrganizer\PreviewRegistry;
-use KLXM\ModuleOrganizer\Repository\ModuleMetaRepository;
+use FriendsOfRedaxo\ModuleOrganizer\PreviewRegistry;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\ModuleMetaRepository;
 use rex;
 use rex_api_exception;
 use rex_api_function;

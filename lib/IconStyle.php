@@ -1,6 +1,6 @@
 <?php
 
-namespace KLXM\ModuleOrganizer;
+namespace FriendsOfRedaxo\ModuleOrganizer;
 
 use rex_addon;
 

@@ -2,6 +2,8 @@
 
 REDAXO-AddOn, das die Modulauswahl im Content-Editor ("Block hinzufügen") durch eine moderne, durchsuchbare Auswahl ersetzt und eine Verwaltungsoberfläche für Kategorien, Favoriten und Vorschau-Icons bereitstellt.
 
+> **Hinweis:** Dieses AddOn ersetzt das AddOn [Modulsuche](https://github.com/FriendsOfREDAXO/modulsuche). Vielen Dank an Daniel Springer für die Modulsuche und die Vorarbeit.
+
 ## Features
 
 - Ersetzt die Bootstrap-Dropdown-Modulauswahl durch ein Overlay, eine geteilte Ansicht (Liste links, große Vorschau rechts) oder ein kompaktes Popover (umschaltbar) – reine Fragment-Überschreibung, kein Eingriff in den Core
@@ -130,9 +132,9 @@ Im Strukturbaum steht hinter jedem Modul, wie oft es eingesetzt ist (ungenutzte 
 Für mehrere Installationen oder Deployments lässt sich die Ordnung auch per PHP anlegen (z. B. in einem Setup-Skript):
 
 ```php
-use KLXM\ModuleOrganizer\Repository\CategoryRepository;
-use KLXM\ModuleOrganizer\Repository\CustomIconRepository;
-use KLXM\ModuleOrganizer\Repository\ModuleMetaRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CategoryRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CustomIconRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\ModuleMetaRepository;
 
 $text = CategoryRepository::create('Text & Bild');            // ['id' => …, 'name' => …]
 $stage = CategoryRepository::create('Bühne & Bilder');
@@ -165,8 +167,9 @@ rex_addon::get('module_organizer')->setConfig('icon_palette', 'ocean');   // red
 
 ## Hinweise
 
-- **Konflikte:** Andere AddOns, die ebenfalls die Modulauswahl ersetzen (`module_preview`, `nv_modulepreview`), überschreiben die Blockauswahl. Der Organizer warnt davor (abschaltbar in den Einstellungen).
+- **Konflikte:** Andere AddOns, die ebenfalls die Modulauswahl ersetzen (`module_preview`, `nv_modulepreview`, `modulsuche`), überschreiben die Blockauswahl. Der Organizer warnt davor (abschaltbar in den Einstellungen).
 - **Rechte:** Die Verwaltung (Kategorien, globale Favoriten, Icons) ist Admins vorbehalten. Alle Redakteure sehen die geordnete Auswahl und können persönliche Favoriten setzen. Es erscheinen nur Module, die für das Template/den Bereich erlaubt sind.
+- **Namespace:** Seit 1.7.0 liegen die Klassen unter `FriendsOfRedaxo\ModuleOrganizer` (vorher `KLXM\ModuleOrganizer`).
 - **Update:** Neue Spalten (Bereiche und Farbe je Kategorie) legt `update.php` an; vorhandene Kategorien, Zuordnungen und Icons bleiben erhalten.
 - **Technik:** Die Blockauswahl wird über eine Fragment-Überschreibung (`fragments/module_select.php`) ersetzt – kein Eingriff in den Core. Daten liegen in `rex_module_organizer_category`, `rex_module_organizer_module`, `rex_module_organizer_user_favorite` und `rex_module_organizer_custom_icon`.
 
@@ -176,8 +179,10 @@ Siehe [CHANGELOG.md](CHANGELOG.md).
 
 ## Credits
 
-**KLXM Crossmedia GmbH** · [https://klxm.de](https://klxm.de)
-Thomas Skerbis
+- **Friends Of REDAXO** – [github.com/FriendsOfREDAXO](https://github.com/FriendsOfREDAXO)
+- **Projekt-Lead:** Thomas Skerbis – [github.com/skerbis](https://github.com/skerbis)
+- **KLXM Crossmedia GmbH** – [klxm.de](https://klxm.de)
+- **Daniel Springer** – Dank für das AddOn [Modulsuche](https://github.com/FriendsOfREDAXO/modulsuche), das der Module Organizer ablöst
 
 ## Lizenz
 

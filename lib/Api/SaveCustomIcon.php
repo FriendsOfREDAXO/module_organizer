@@ -1,9 +1,9 @@
 <?php
 
-namespace KLXM\ModuleOrganizer\Api;
+namespace FriendsOfRedaxo\ModuleOrganizer\Api;
 
-use KLXM\ModuleOrganizer\CustomIconRenderer;
-use KLXM\ModuleOrganizer\Repository\CustomIconRepository;
+use FriendsOfRedaxo\ModuleOrganizer\CustomIconRenderer;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CustomIconRepository;
 use rex;
 use rex_api_exception;
 use rex_api_function;

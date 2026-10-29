@@ -1,6 +1,6 @@
 <?php
 
-namespace KLXM\ModuleOrganizer;
+namespace FriendsOfRedaxo\ModuleOrganizer;
 
 /**
  * Baut aus einer vom Icon-Editor (assets/module_organizer_icon_editor.js)

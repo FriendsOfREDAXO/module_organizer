@@ -10,7 +10,7 @@ module_organizer_display_mode_popover = Popover (compact, anchored to the button
 module_organizer_display_mode_popover_notice = Slim list right under the "Add block" button, grouped by category, favorites always first.
 module_organizer_display_mode_overlay = Overlay (large tile window)
 module_organizer_display_mode_overlay_notice = Centered window with tile grid and sidebar filters, similar to MediaPlace.
-module_organizer_warn_module_preview_conflict = Show a warning when a conflicting addon (module_preview, nv_modulepreview) is active
+module_organizer_warn_module_preview_conflict = Show a warning when a conflicting addon (module_preview, nv_modulepreview, modulsuche) is active
 module_organizer_save = Save
 
 # Conflict warning

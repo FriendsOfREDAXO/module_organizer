@@ -1,6 +1,6 @@
 <?php
 
-namespace KLXM\ModuleOrganizer\Repository;
+namespace FriendsOfRedaxo\ModuleOrganizer\Repository;
 
 use rex;
 use rex_sql;
@@ -65,7 +65,7 @@ class CustomIconRepository
     /** @param string|null $shapes bereits geprüfte Formen als JSON (CustomIconRenderer::sanitizeShapes) */
     public static function save(?int $id, ?string $title, string $svg, string $kind = 'icon', ?string $shapes = null): int
     {
-        $svg = \KLXM\ModuleOrganizer\SvgSanitizer::sanitize($svg);
+        $svg = \FriendsOfRedaxo\ModuleOrganizer\SvgSanitizer::sanitize($svg);
         if (null === $svg) {
             throw new \InvalidArgumentException('Invalid SVG');
         }
