@@ -2,21 +2,21 @@
 
 /** @var rex_addon $this */
 
-rex_api_function::register('module_organizer_reorder', KLXM\ModuleOrganizer\Api\Reorder::class);
-rex_api_function::register('module_organizer_save_meta', KLXM\ModuleOrganizer\Api\SaveMeta::class);
-rex_api_function::register('module_organizer_category', KLXM\ModuleOrganizer\Api\Category::class);
-rex_api_function::register('module_organizer_toggle_user_favorite', KLXM\ModuleOrganizer\Api\ToggleUserFavorite::class);
-rex_api_function::register('module_organizer_save_custom_icon', KLXM\ModuleOrganizer\Api\SaveCustomIcon::class);
-rex_api_function::register('module_organizer_preview_custom_icon', KLXM\ModuleOrganizer\Api\PreviewCustomIcon::class);
-rex_api_function::register('module_organizer_delete_custom_icon', KLXM\ModuleOrganizer\Api\DeleteCustomIcon::class);
-rex_api_function::register('module_organizer_save_preview', KLXM\ModuleOrganizer\Api\SavePreview::class);
-rex_api_function::register('module_organizer_editor_templates', KLXM\ModuleOrganizer\Api\EditorTemplates::class);
+rex_api_function::register('module_organizer_reorder', FriendsOfRedaxo\ModuleOrganizer\Api\Reorder::class);
+rex_api_function::register('module_organizer_save_meta', FriendsOfRedaxo\ModuleOrganizer\Api\SaveMeta::class);
+rex_api_function::register('module_organizer_category', FriendsOfRedaxo\ModuleOrganizer\Api\Category::class);
+rex_api_function::register('module_organizer_toggle_user_favorite', FriendsOfRedaxo\ModuleOrganizer\Api\ToggleUserFavorite::class);
+rex_api_function::register('module_organizer_save_custom_icon', FriendsOfRedaxo\ModuleOrganizer\Api\SaveCustomIcon::class);
+rex_api_function::register('module_organizer_preview_custom_icon', FriendsOfRedaxo\ModuleOrganizer\Api\PreviewCustomIcon::class);
+rex_api_function::register('module_organizer_delete_custom_icon', FriendsOfRedaxo\ModuleOrganizer\Api\DeleteCustomIcon::class);
+rex_api_function::register('module_organizer_save_preview', FriendsOfRedaxo\ModuleOrganizer\Api\SavePreview::class);
+rex_api_function::register('module_organizer_editor_templates', FriendsOfRedaxo\ModuleOrganizer\Api\EditorTemplates::class);
 
 // Zuletzt verwendet: beim Einfügen eines Blocks für den Benutzer merken
 rex_extension::register('SLICE_ADDED', static function (rex_extension_point $ep) {
     $user = rex::getUser();
     if (null !== $user) {
-        KLXM\ModuleOrganizer\Repository\UserRecentRepository::add((int) $user->getId(), (int) $ep->getParam('module_id'));
+        FriendsOfRedaxo\ModuleOrganizer\Repository\UserRecentRepository::add((int) $user->getId(), (int) $ep->getParam('module_id'));
     }
     return $ep->getSubject();
 });
@@ -30,13 +30,13 @@ if (rex::isBackend() && rex::getUser()) {
     $isContentEdit = 'index.php?page=content/edit' === rex_url::currentBackendPage();
 
     // Icon-Stil Duotone: Klasse und Farben am body – gilt für Popover, Overlay und die Organizer-Seite
-    if (\KLXM\ModuleOrganizer\IconStyle::isDuotone()) {
+    if (\FriendsOfRedaxo\ModuleOrganizer\IconStyle::isDuotone()) {
         rex_extension::register('PAGE_BODY_ATTR', static function (rex_extension_point $ep): array {
             $attr = $ep->getSubject();
             $attr['class'][] = 'mo-icons-duotone';
             // der Core gibt Body-Attribute nur als Array aus (Werte mit Leerzeichen verbunden)
             $attr['style'] = (array) ($attr['style'] ?? []);
-            $attr['style'][] = \KLXM\ModuleOrganizer\IconStyle::bodyStyle() . ';';
+            $attr['style'][] = \FriendsOfRedaxo\ModuleOrganizer\IconStyle::bodyStyle() . ';';
             return $attr;
         });
     }

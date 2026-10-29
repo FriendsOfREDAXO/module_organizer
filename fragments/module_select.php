@@ -10,11 +10,11 @@
  * @psalm-scope-this rex_fragment
  */
 
-use KLXM\ModuleOrganizer\IconRegistry;
-use KLXM\ModuleOrganizer\Repository\CategoryRepository;
-use KLXM\ModuleOrganizer\Repository\CustomIconRepository;
-use KLXM\ModuleOrganizer\Repository\ModuleMetaRepository;
-use KLXM\ModuleOrganizer\Repository\UserFavoriteRepository;
+use FriendsOfRedaxo\ModuleOrganizer\IconRegistry;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CategoryRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CustomIconRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\ModuleMetaRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\UserFavoriteRepository;
 
 $items = $this->getVar('items');
 $buttonLabel = $this->getVar('button_label');
@@ -27,7 +27,7 @@ $categoryNames = array_column($categories, 'name', 'id');
 $categoryPriorities = array_column($categories, 'priority', 'id');
 $user = rex::getUser();
 $userFavorites = null !== $user ? UserFavoriteRepository::getForUser((int) $user->getId()) : [];
-$userRecent = null !== $user ? \KLXM\ModuleOrganizer\Repository\UserRecentRepository::getForUser((int) $user->getId()) : [];
+$userRecent = null !== $user ? \FriendsOfRedaxo\ModuleOrganizer\Repository\UserRecentRepository::getForUser((int) $user->getId()) : [];
 $tileStyle = 'previews' === rex_addon::get('module_organizer')->getConfig('overlay_tiles', 'icons') ? 'previews' : 'icons';
 
 // Aktuelle Strukturkategorie: Organizer-Kategorien können auf Bereiche beschränkt sein
@@ -64,7 +64,7 @@ foreach ($items as $item) {
         'key' => $item['key'],
         // Titel kommt vom Core bereits HTML-escaped (z. B. „&amp;“); das JS setzt ihn per textContent ein –
         // ohne Rückdekodierung stünde dort buchstäblich „Text &amp; Medien“.
-        'title' => \KLXM\ModuleOrganizer\TitleFormatter::display(htmlspecialchars_decode($item['title'])),
+        'title' => \FriendsOfRedaxo\ModuleOrganizer\TitleFormatter::display(htmlspecialchars_decode($item['title'])),
         // voller Modulname für die Suche (z. B. „001“ oder ein ausgeblendetes Präfix)
         'full_title' => htmlspecialchars_decode($item['title']),
         // $item['href'] kommt vom Core bereits HTML-escaped (rex_context::
@@ -96,7 +96,7 @@ foreach ($items as $item) {
         'custom_svg' => $customSvg,
         'priority' => $moduleMeta['priority'] ?? 0,
         // Vorschaubild (Vorlage oder Medienpool) und „Zuletzt verwendet“ (Rang, 0 = nein)
-        'preview' => \KLXM\ModuleOrganizer\PreviewRegistry::resolve($moduleMeta['preview_key'] ?? null, $iconKey),
+        'preview' => \FriendsOfRedaxo\ModuleOrganizer\PreviewRegistry::resolve($moduleMeta['preview_key'] ?? null, $iconKey),
         'recent_rank' => $userRecent[$moduleId] ?? 0,
     ];
 }

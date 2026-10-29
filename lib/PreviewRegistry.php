@@ -1,8 +1,8 @@
 <?php
 
-namespace KLXM\ModuleOrganizer;
+namespace FriendsOfRedaxo\ModuleOrganizer;
 
-use KLXM\ModuleOrganizer\Repository\CustomIconRepository;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CustomIconRepository;
 use rex_addon;
 use rex_media;
 use rex_media_manager;

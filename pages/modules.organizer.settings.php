@@ -1,7 +1,7 @@
 <?php
 
-use KLXM\ModuleOrganizer\IconStyle;
-use KLXM\ModuleOrganizer\TitleFormatter;
+use FriendsOfRedaxo\ModuleOrganizer\IconStyle;
+use FriendsOfRedaxo\ModuleOrganizer\TitleFormatter;
 
 $addon = rex_addon::get('module_organizer');
 

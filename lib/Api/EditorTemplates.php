@@ -1,10 +1,10 @@
 <?php
 
-namespace KLXM\ModuleOrganizer\Api;
+namespace FriendsOfRedaxo\ModuleOrganizer\Api;
 
-use KLXM\ModuleOrganizer\IconRegistry;
-use KLXM\ModuleOrganizer\PreviewRegistry;
-use KLXM\ModuleOrganizer\Repository\CustomIconRepository;
+use FriendsOfRedaxo\ModuleOrganizer\IconRegistry;
+use FriendsOfRedaxo\ModuleOrganizer\PreviewRegistry;
+use FriendsOfRedaxo\ModuleOrganizer\Repository\CustomIconRepository;
 use rex;
 use rex_addon;
 use rex_api_exception;

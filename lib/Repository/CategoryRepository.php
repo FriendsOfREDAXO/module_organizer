@@ -1,6 +1,6 @@
 <?php
 
-namespace KLXM\ModuleOrganizer\Repository;
+namespace FriendsOfRedaxo\ModuleOrganizer\Repository;
 
 use rex;
 use rex_sql;
@@ -24,7 +24,7 @@ class CategoryRepository
                 'priority' => (int) $row['priority'],
                 'structure_ids' => array_values(array_filter(array_map('intval', explode(',', (string) ($row['structure_ids'] ?? ''))))),
                 'structure_children' => (bool) ($row['structure_children'] ?? true),
-                'color' => \KLXM\ModuleOrganizer\IconStyle::color((string) ($row['color'] ?? '')),
+                'color' => \FriendsOfRedaxo\ModuleOrganizer\IconStyle::color((string) ($row['color'] ?? '')),
             ];
         }
 
@@ -51,7 +51,7 @@ class CategoryRepository
     /** Akzentfarbe der Icons dieser Kategorie (Duotone), leer = Palette */
     public static function saveColor(int $id, string $color): void
     {
-        $color = \KLXM\ModuleOrganizer\IconStyle::color($color);
+        $color = \FriendsOfRedaxo\ModuleOrganizer\IconStyle::color($color);
         $sql = rex_sql::factory();
         $sql->setTable(rex::getTable('module_organizer_category'));
         $sql->setWhere(['id' => $id]);
