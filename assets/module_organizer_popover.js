@@ -139,8 +139,18 @@
         });
     }
 
+    // Reihenfolge wie im Strukturbaum des Organizers (wie Overlay und geteilte Ansicht):
+    // Kategorien nach ihrer Position, darin Module nach ihrer Position, erst dann alphabetisch
     function sortItems(items) {
         return items.slice().sort(function (a, b) {
+            var ca = a.category_id ? (a.category_priority || 0) : Number.MAX_SAFE_INTEGER;
+            var cb = b.category_id ? (b.category_priority || 0) : Number.MAX_SAFE_INTEGER;
+            if (ca !== cb) {
+                return ca - cb;
+            }
+            if ((a.priority || 0) !== (b.priority || 0)) {
+                return (a.priority || 0) - (b.priority || 0);
+            }
             return a.title.localeCompare(b.title);
         });
     }
