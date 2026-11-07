@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.7.1] - unveröffentlicht
+## [1.7.1] - 2026-11-07
 
 ### Fixed
 - Kompakte Liste (Popover): Module innerhalb einer Kategorie und die Favoriten erscheinen jetzt in der Reihenfolge aus dem Strukturbaum des Organizers – wie im Overlay und in der geteilten Ansicht. Bisher wurden sie alphabetisch sortiert, die per Drag & Drop festgelegte Reihenfolge wurde ignoriert.
